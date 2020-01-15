@@ -1,0 +1,4 @@
+.stack-work/
+mars-rover.cabal
+*.lock
+*~
