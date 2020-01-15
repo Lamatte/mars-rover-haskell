@@ -5,7 +5,7 @@ main :: IO ()
 main = hspec $ do
   describe "Pilot" $ do
     it "shall apply moves" $ do
-      pilot "FFLB" ((2,2), North) `shouldBe` "F, F, L, B"
+      pilot "FFLB" ((2,2), North) `shouldBe` "F, F, L, B -> ((3,4),West)"
   describe "Rover" $ do
     it "shall initially by at origin, facing north" $ do
       initialRover `shouldBe` ((0,0), North)

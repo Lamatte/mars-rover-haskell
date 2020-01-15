@@ -13,7 +13,7 @@ initialRover = ((0,0), North)
 pilot commands rover = pilotLog commands rover ""
 
 pilotLog (command:commands) rover log = pilotLog commands (execute command rover) (logCommand command log)
-pilotLog "" rover log = log
+pilotLog "" rover log = log++" -> "++(show rover)
 
 logCommand command "" = [command]
 logCommand command log = concat [log, ", ", [command]]
