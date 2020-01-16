@@ -2,3 +2,4 @@
 mars-rover.cabal
 *.lock
 *~
+.vim
