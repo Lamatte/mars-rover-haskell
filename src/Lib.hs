@@ -3,10 +3,21 @@ module Lib
     , initialRover
     , execute
     , pilot
+    , Planet(..)
     , demo
     ) where
 
 data Orientation = North | South | West | East deriving (Show, Eq)
+data Planet = Planet {size :: Integer} deriving (Eq)
+
+instance Show Planet where
+  show planet = concat(map (showRow planet)  [0..(planetSize planet)-1])
+
+showRow planet i = concat (map (showCell planet) [0..(planetSize planet)-1]) ++ "\n"
+
+showCell planet i = "."
+
+planetSize (Planet size) = size
 
 initialRover = ((0,0), North)
 
