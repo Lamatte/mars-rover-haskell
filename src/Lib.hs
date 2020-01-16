@@ -1,7 +1,6 @@
 module Lib
     ( Orientation(..)
     , Rover(..)
-    , initialRover
     , execute
     , pilot
     , Planet(..)
@@ -20,8 +19,6 @@ showRow planet i = concat (map (showCell planet) [0..(planetSize planet)-1]) ++ 
 showCell planet i = "."
 
 planetSize (Planet size) = size
-
-initialRover = Rover ((0,0), North)
 
 pilot commands rover = pilotLog commands rover ""
 

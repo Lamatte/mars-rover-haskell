@@ -3,15 +3,13 @@ import Lib
 
 main :: IO ()
 main = hspec $ do
-  describe "Mars" $ do
+  describe "Planet" $ do
     it "shall show" $ do
       show (Planet 2) `shouldBe` "..\n..\n"
   describe "Pilot" $ do
     it "shall apply moves" $ do
       pilot "FFLB" ((2,2), North) `shouldBe` "F, F, L, B -> ((3,4),West)"
   describe "Rover" $ do
-    it "shall initially by at origin, facing north" $ do
-      initialRover `shouldBe` Rover ((0,0), North)
     it "shall move forward" $ do
       execute 'F' ((2,2), North)  `shouldBe` ((2,3), North)
       execute 'F' ((2,2), South)  `shouldBe` ((2,1), South)
