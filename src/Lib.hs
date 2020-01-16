@@ -1,5 +1,6 @@
 module Lib
     ( Orientation(..)
+    , Rover(..)
     , initialRover
     , execute
     , pilot
@@ -8,6 +9,7 @@ module Lib
     ) where
 
 data Orientation = North | South | West | East deriving (Show, Eq)
+data Rover = Rover ((Int, Int), Orientation) deriving (Show, Eq)
 data Planet = Planet {size :: Integer} deriving (Eq)
 
 instance Show Planet where
@@ -19,7 +21,7 @@ showCell planet i = "."
 
 planetSize (Planet size) = size
 
-initialRover = ((0,0), North)
+initialRover = Rover ((0,0), North)
 
 pilot commands rover = pilotLog commands rover ""
 
