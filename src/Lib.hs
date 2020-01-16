@@ -29,17 +29,17 @@ logCommand command "" = [command]
 logCommand command log = concat [log, ", ", [command]]
 
 -- TODO remove replication
-execute 'F' ((x,y), North) = ((x,y+1), North)
-execute 'F' ((x,y), South) = ((x,y-1), South)
-execute 'F' ((x,y), West) = ((x-1,y), West)
-execute 'F' ((x,y), East) = ((x+1,y), East)
-execute 'B' ((x,y), North) = ((x,y-1), North)
-execute 'B' ((x,y), South) = ((x,y+1), South)
-execute 'B' ((x,y), West) = ((x+1,y), West)
-execute 'B' ((x,y), East) = ((x-1,y), East)
+execute 'F' (Rover ((x,y), North)) = Rover ((x,y+1), North)
+execute 'F' (Rover ((x,y), South)) = Rover ((x,y-1), South)
+execute 'F' (Rover ((x,y), West)) = Rover ((x-1,y), West)
+execute 'F' (Rover ((x,y), East)) = Rover ((x+1,y), East)
+execute 'B' (Rover ((x,y), North)) = Rover ((x,y-1), North)
+execute 'B' (Rover ((x,y), South)) = Rover ((x,y+1), South)
+execute 'B' (Rover ((x,y), West)) = Rover ((x+1,y), West)
+execute 'B' (Rover ((x,y), East)) = Rover ((x-1,y), East)
 
-execute 'L' (p, o) = (p, left o)
-execute 'R' (p, o) = (p, right o)
+execute 'L' (Rover (p, o)) = Rover (p, left o)
+execute 'R' (Rover (p, o)) = Rover (p, right o)
 
 left North = West
 left West = South

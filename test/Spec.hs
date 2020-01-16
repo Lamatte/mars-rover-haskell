@@ -8,25 +8,25 @@ main = hspec $ do
       show (Planet 2) `shouldBe` "..\n..\n"
   describe "Pilot" $ do
     it "shall apply moves" $ do
-      pilot "FFLB" ((2,2), North) `shouldBe` "F, F, L, B -> ((3,4),West)"
+      pilot "FFLB" (Rover ((2,2), North)) `shouldBe` "F, F, L, B -> Rover ((3,4),West)"
   describe "Rover" $ do
     it "shall move forward" $ do
-      execute 'F' ((2,2), North)  `shouldBe` ((2,3), North)
-      execute 'F' ((2,2), South)  `shouldBe` ((2,1), South)
-      execute 'F' ((2,2), West)  `shouldBe` ((1,2), West)
-      execute 'F' ((2,2), East)  `shouldBe` ((3,2), East)
+      execute 'F' (Rover ((2,2), North))  `shouldBe` (Rover ((2,3), North))
+      execute 'F' (Rover ((2,2), South))  `shouldBe` (Rover ((2,1), South))
+      execute 'F' (Rover ((2,2), West))  `shouldBe` (Rover ((1,2), West))
+      execute 'F' (Rover ((2,2), East))  `shouldBe` (Rover ((3,2), East))
     it "shall move backward" $ do
-      execute 'B' ((2,2), North)  `shouldBe` ((2,1), North)
-      execute 'B' ((2,2), South)  `shouldBe` ((2,3), South)
-      execute 'B' ((2,2), West)  `shouldBe` ((3,2), West)
-      execute 'B' ((2,2), East)  `shouldBe` ((1,2), East)
+      execute 'B' (Rover ((2,2), North))  `shouldBe` (Rover ((2,1), North))
+      execute 'B' (Rover ((2,2), South))  `shouldBe` (Rover ((2,3), South))
+      execute 'B' (Rover ((2,2), West))  `shouldBe` (Rover ((3,2), West))
+      execute 'B' (Rover ((2,2), East))  `shouldBe` (Rover ((1,2), East))
     it "shall turn left" $ do
-      execute 'L' ((2,2), North)  `shouldBe` ((2,2), West)
-      execute 'L' ((2,2), West)  `shouldBe` ((2,2), South)
-      execute 'L' ((2,2), South)  `shouldBe` ((2,2), East)
-      execute 'L' ((2,2), East)  `shouldBe` ((2,2), North)
+      execute 'L' (Rover ((2,2), North))  `shouldBe` (Rover ((2,2), West))
+      execute 'L' (Rover ((2,2), West))  `shouldBe` (Rover ((2,2), South))
+      execute 'L' (Rover ((2,2), South))  `shouldBe` (Rover ((2,2), East))
+      execute 'L' (Rover ((2,2), East))  `shouldBe` (Rover ((2,2), North))
     it "shall turn right" $ do
-      execute 'R' ((2,2), North)  `shouldBe` ((2,2), East)
-      execute 'R' ((2,2), East)  `shouldBe` ((2,2), South)
-      execute 'R' ((2,2), South)  `shouldBe` ((2,2), West)
-      execute 'R' ((2,2), West)  `shouldBe` ((2,2), North)
+      execute 'R' (Rover ((2,2), North))  `shouldBe` (Rover ((2,2), East))
+      execute 'R' (Rover ((2,2), East))  `shouldBe` (Rover ((2,2), South))
+      execute 'R' (Rover ((2,2), South))  `shouldBe` (Rover ((2,2), West))
+      execute 'R' (Rover ((2,2), West))  `shouldBe` (Rover ((2,2), North))
