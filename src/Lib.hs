@@ -5,18 +5,25 @@ module Lib
     , pilot
     , Planet(..)
     , demo
+    , showPlanet
     ) where
 
 data Orientation = North | South | West | East deriving (Show, Eq)
 data Rover = Rover ((Int, Int), Orientation) deriving (Show, Eq)
-data Planet = Planet {size :: Integer} deriving (Eq)
+data Planet = Planet {size :: Int} deriving (Eq)
 
-instance Show Planet where
-  show planet = concat(map (showRow planet)  [0..(planetSize planet)-1])
+showPlanet planet rover = concat(map (showRow planet rover)  (reverse [0..(planetSize planet)-1]))
 
-showRow planet i = concat (map (showCell planet) [0..(planetSize planet)-1]) ++ "\n"
+showRow planet rover y = concat (map (showCell planet rover y) [0..(planetSize planet)-1]) ++ "\n"
 
-showCell planet i = "."
+showCell planet (Rover ((xr, yr), o)) y x 
+    | (x,y) == (xr, yr) = showOrientation o
+    | otherwise = "."
+
+showOrientation North = "^"
+showOrientation South = "v"
+showOrientation East = ">"
+showOrientation West = "<"
 
 planetSize (Planet size) = size
 

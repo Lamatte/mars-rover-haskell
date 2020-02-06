@@ -5,7 +5,8 @@ main :: IO ()
 main = hspec $ do
   describe "Planet" $ do
     it "shall show" $ do
-      show (Planet 2) `shouldBe` "..\n..\n"
+      showPlanet (Planet 2) (Rover ((0,0), North)) `shouldBe` "..\n^.\n"
+      showPlanet (Planet 2) (Rover ((1,0), South)) `shouldBe` "..\n.v\n"
   describe "Pilot" $ do
     it "shall apply moves" $ do
       pilot "FFLB" (Rover ((2,2), North)) `shouldBe` "F, F, L, B -> Rover ((3,4),West)"
